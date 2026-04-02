@@ -448,13 +448,16 @@ border: 1.5px solid rgba(255,255,255,0.12);
 
 .trip-header {
 display: flex;
-align-items: center;
-gap: 12px;
+align-items: flex-start;
+gap: 14px;
 margin-bottom: 20px;
 }
 
 .trip-flag {
 font-size: 28px;
+line-height: 1;
+margin-top: 2px;
+flex-shrink: 0;
 }
 
 .trip-info h4 {
@@ -462,11 +465,20 @@ font-family: ‘Cabinet Grotesk’, sans-serif;
 font-weight: 800;
 font-size: 18px;
 color: #FFFFFF;
+line-height: 1.2;
+margin-bottom: 4px;
 }
 
+.trip-info {
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: left;
+}
 .trip-info p {
 font-size: 13px;
 color: rgba(255,255,255,0.5);
+line-height: 1.4;
 }
 
 .outfit-list {
@@ -1038,8 +1050,8 @@ justify-content: center;
 <div class="trip-header">
   <div class="trip-flag">🇮🇹</div>
   <div class="trip-info">
-    <h4>Rome & Amalfi · 7 days</h4>
-    <p>Jun 12–19 · Sightseeing, beach, fine dining</p>
+    <h4>Rome &amp; Amalfi &middot; 7 days</h4>
+    <p>Jun 12&ndash;19 &middot; Sightseeing, beach, fine dining</p>
   </div>
 </div>
 
