@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Packer — Pack Smarter. Travel Better.</title>
+<title>packme — Pack Smarter. Travel Better.</title>
 <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   /* Colors: coral=#FF5C3A navy=#0D1B2A sun=#FFD166 sky=#06C8E0 mint=#3DFFC0 cream=#FFF8F0 */
@@ -936,7 +936,7 @@ justify-content: center;
       <input type="email" id="gateEmail" class="gate-input" placeholder="Enter your email to get access" />
       <button class="gate-btn" onclick="gateSignup()">Join Waitlist &amp; Enter Site →</button>
     </div>
-    <p class="gate-privacy">No spam. No credit card. Unsubscribe anytime.<br>Your email is only used to notify you when Packer launches.</p>
+    <p class="gate-privacy">No spam. No credit card. Unsubscribe anytime.<br>Your email is only used to notify you when packme launches.</p>
   </div>
 </div>
 
@@ -967,7 +967,7 @@ justify-content: center;
 
   <p class="hero-sub">
     Upload your wardrobe once. Drop in your itinerary.
-    <strong>Packer builds your perfect outfit plan</strong> — so you stop overpacking,
+    <strong>packme builds your perfect outfit plan</strong> — so you stop overpacking,
     stop stressing, and actually enjoy getting ready to go.
   </p>
 
@@ -1029,19 +1029,19 @@ justify-content: center;
       <span class="step-num">01</span>
       <span class="step-icon">👗</span>
       <h3>Upload your wardrobe</h3>
-      <p>Take photos of your clothes once — or even just dump your camera roll. Packer's AI scans and catalogues everything: style, occasion, season, color.</p>
+      <p>Take photos of your clothes once — or even just dump your camera roll. packme's AI scans and catalogues everything: style, occasion, season, color.</p>
     </div>
     <div class="step reveal">
       <span class="step-num">02</span>
       <span class="step-icon">🗺️</span>
       <h3>Drop in your itinerary</h3>
-      <p>Tell Packer where you're going, for how long, and what you've got planned. Beach day? Business dinner? Hiking? Just type it out or paste your itinerary.</p>
+      <p>Tell packme where you're going, for how long, and what you've got planned. Beach day? Business dinner? Hiking? Just type it out or paste your itinerary.</p>
     </div>
     <div class="step reveal">
       <span class="step-num">03</span>
       <span class="step-icon">✨</span>
       <h3>Get your perfect pack list</h3>
-      <p>Packer builds you a day-by-day outfit plan using your actual clothes, optimized for the weather, activities, and your personal style. Zero guesswork.</p>
+      <p>packme builds you a day-by-day outfit plan using your actual clothes, optimized for the weather, activities, and your personal style. Zero guesswork.</p>
     </div>
   </div>
 </section>
@@ -1116,7 +1116,7 @@ justify-content: center;
   <div class="testimonials">
     <div class="testimonial reveal">
       <div class="stars">★★★★★</div>
-      <p>"I used to spend literally 2–3 hours packing for every trip. Packer did it in under 5 minutes and I actually wore every single thing I brought."</p>
+      <p>"I used to spend literally 2–3 hours packing for every trip. packme did it in under 5 minutes and I actually wore every single thing I brought."</p>
       <div class="reviewer">
         <div class="reviewer-avatar" style="background: #FFD166;">😄</div>
         <div>
@@ -1167,7 +1167,7 @@ justify-content: center;
 
 <footer>
   <div class="logo">Pack<span style="color:#FF5C3A">er</span></div>
-  <span>© 2025 Packer. Made for people who'd rather be traveling.</span>
+  <span>© 2025 packme. Made for people who'd rather be traveling.</span>
 </footer>
 
 <script>
@@ -1233,7 +1233,7 @@ justify-content: center;
       return;
     }
     submitToMailchimp(email);
-    sessionStorage.setItem('packer_access', '1');
+    sessionStorage.setItem('packme_access', '1');
     // Animate gate out
     const gate = document.getElementById('gate');
     gate.style.transition = 'opacity 0.7s ease';
@@ -1247,7 +1247,7 @@ justify-content: center;
   });
 
   // Skip gate if already signed up this session
-  if (sessionStorage.getItem('packer_access')) {
+  if (sessionStorage.getItem('packme_access')) {
     document.getElementById('gate').classList.add('hidden');
   }
 
