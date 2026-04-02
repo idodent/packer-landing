@@ -1021,11 +1021,13 @@ footer { flex-direction: column; gap: 12px; text-align: center; }
       document.getElementById(inputId).style.borderColor = '#FF5C3A';
       return;
     }
-fetch("https://gmail.us6.list-manage.com/subscribe/post?u=391e756fef9c831a306789fe7&amp;id=027d6c41b9&amp;f_id=00bd02e3f0",{
-	method: 'post',
-	mode: 'no-cors',
-	body: new URLSearchParams({ EMAIL: email })
-	});
+fetch("https://gmail.us6.list-manage.com/subscribe/post?u=391e756fef9c831a306789fe7&id=027d6c41b9&f_id=00bd02e3f0", {
+  method: "POST",
+  mode: "no-cors",
+  body: new URLSearchParams({
+    EMAIL: email
+  })
+});
     document.getElementById(inputId).style.display = 'none';
     const btn = document.getElementById(inputId).nextElementSibling;
     if (btn) btn.style.display = 'none';
