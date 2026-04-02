@@ -739,10 +739,174 @@ nav { padding: 20px 24px; }
 footer { flex-direction: column; gap: 12px; text-align: center; }
 .final-form { flex-direction: column; }
 }
-</style>
 
+/* ── EMAIL GATE ─────────────────────────────────────── */
+#gate {
+position: fixed;
+inset: 0;
+background: var(–navy);
+z-index: 99999;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 24px;
+transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#gate.hidden {
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
+}
+.gate-box {
+background: rgba(255,255,255,0.04);
+border: 1.5px solid rgba(255,255,255,0.10);
+border-radius: 28px;
+padding: 48px 40px;
+max-width: 460px;
+width: 100%;
+text-align: center;
+}
+.gate-logo {
+font-family: ‘Cabinet Grotesk’, sans-serif;
+font-weight: 900;
+font-size: 36px;
+color: #fff;
+letter-spacing: -1px;
+margin-bottom: 8px;
+}
+.gate-logo span { color: var(–coral); }
+.gate-tag {
+display: inline-block;
+background: var(–sun);
+color: var(–navy);
+font-size: 12px;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: uppercase;
+padding: 5px 14px;
+border-radius: 100px;
+margin-bottom: 28px;
+}
+.gate-headline {
+font-family: ‘Cabinet Grotesk’, sans-serif;
+font-weight: 900;
+font-size: clamp(28px, 6vw, 42px);
+color: #fff;
+line-height: 1.05;
+letter-spacing: -1.5px;
+margin-bottom: 14px;
+}
+.gate-headline em { color: var(–coral); font-style: normal; }
+.gate-sub {
+font-size: 15px;
+color: rgba(255,255,255,0.5);
+line-height: 1.6;
+margin-bottom: 32px;
+font-weight: 500;
+}
+.gate-form {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+.gate-input {
+width: 100%;
+padding: 18px 22px;
+border-radius: 100px;
+border: 2px solid rgba(255,255,255,0.15);
+background: rgba(255,255,255,0.07);
+color: #fff;
+font-family: ‘Satoshi’, sans-serif;
+font-size: 16px;
+font-weight: 500;
+outline: none;
+transition: border-color 0.2s;
+text-align: center;
+}
+.gate-input::placeholder { color: rgba(255,255,255,0.3); }
+.gate-input:focus { border-color: var(–coral); }
+.gate-input.error { border-color: var(–coral); }
+.gate-btn {
+width: 100%;
+padding: 18px;
+border-radius: 100px;
+background: var(–coral);
+color: #fff;
+font-family: ‘Cabinet Grotesk’, sans-serif;
+font-weight: 800;
+font-size: 17px;
+border: none;
+cursor: pointer;
+transition: all 0.2s ease;
+box-shadow: 0 4px 24px rgba(255,92,58,0.35);
+}
+.gate-btn:hover {
+background: #fff;
+color: var(–coral);
+transform: translateY(-2px);
+}
+.gate-privacy {
+font-size: 12px;
+color: rgba(255,255,255,0.25);
+margin-top: 16px;
+line-height: 1.5;
+}
+.gate-count {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+margin-bottom: 28px;
+font-size: 13px;
+color: rgba(255,255,255,0.45);
+font-weight: 500;
+}
+.gate-dots {
+display: flex;
+}
+.gate-dot {
+width: 28px;
+height: 28px;
+border-radius: 50%;
+border: 2px solid var(–navy);
+margin-left: -8px;
+font-size: 14px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.gate-dot:first-child { margin-left: 0; background: var(–sun); }
+.gate-dot:nth-child(2) { background: var(–sky); }
+.gate-dot:nth-child(3) { background: var(–mint); }
+.gate-dot:nth-child(4) { background: var(–coral); }
+/* ── END GATE ───────────────────────────────────────── */
+
+</style>
 </head>
 <body>
+
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-logo">Pack<span>er</span></div>
+    <div class="gate-tag">✈️ Early Access</div>
+    <h2 class="gate-headline">Stop guessing<br>what to <em>pack.</em></h2>
+    <p class="gate-sub">Join the waitlist for early access to the AI packing app that uses <strong style="color:#fff">your actual wardrobe</strong> to build your perfect trip outfit plan.</p>
+    <div class="gate-count">
+      <div class="gate-dots">
+        <div class="gate-dot">😎</div>
+        <div class="gate-dot">🙋</div>
+        <div class="gate-dot">✈️</div>
+        <div class="gate-dot">🌍</div>
+      </div>
+      <span>2,400+ travelers already waiting</span>
+    </div>
+    <div class="gate-form">
+      <input type="email" id="gateEmail" class="gate-input" placeholder="Enter your email to get access" />
+      <button class="gate-btn" onclick="gateSignup()">Join Waitlist &amp; Enter Site →</button>
+    </div>
+    <p class="gate-privacy">No spam. No credit card. Unsubscribe anytime.<br>Your email is only used to notify you when Packer launches.</p>
+  </div>
+</div>
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -1014,33 +1178,63 @@ footer { flex-direction: column; gap: 12px; text-align: center; }
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Mailchimp Signup
+  // ── MAILCHIMP ────────────────────────────────────────
   const MAILCHIMP_URL = 'https://gmail.us6.list-manage.com/subscribe/post?u=391e756fef9c831a306789fe7&id=027d6c41b9&f_id=00bd02e3f0';
 
-  function signup(inputId, successId) {
-    const emailInput = document.getElementById(inputId);
-    const email = emailInput.value.trim();
-
-    if (!email || !email.includes('@')) {
-      emailInput.style.borderColor = '#FF5C3A';
-      emailInput.placeholder = 'Please enter a valid email';
-      return;
-    }
-
-    // Submit to Mailchimp (no-cors is expected — email is still captured)
+  function submitToMailchimp(email) {
     fetch(MAILCHIMP_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({ EMAIL: email, tags: 'waitlist' })
     }).catch(() => {});
+  }
 
-    // Show success message
+  // Gate signup — submits email then reveals the site
+  function gateSignup() {
+    const input = document.getElementById('gateEmail');
+    const email = input.value.trim();
+    if (!email || !email.includes('@')) {
+      input.classList.add('error');
+      input.placeholder = 'Please enter a valid email ↑';
+      input.value = '';
+      return;
+    }
+    submitToMailchimp(email);
+    sessionStorage.setItem('packer_access', '1');
+    // Animate gate out
+    const gate = document.getElementById('gate');
+    gate.style.transition = 'opacity 0.7s ease';
+    gate.style.opacity = '0';
+    setTimeout(() => gate.classList.add('hidden'), 700);
+  }
+
+  // Allow Enter key on gate input
+  document.getElementById('gateEmail').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') gateSignup();
+  });
+
+  // Skip gate if already signed up this session
+  if (sessionStorage.getItem('packer_access')) {
+    document.getElementById('gate').classList.add('hidden');
+  }
+
+  // Inline signup (hero + footer forms — show success message)
+  function signup(inputId, successId) {
+    const emailInput = document.getElementById(inputId);
+    const email = emailInput.value.trim();
+    if (!email || !email.includes('@')) {
+      emailInput.style.borderColor = '#FF5C3A';
+      emailInput.placeholder = 'Please enter a valid email';
+      return;
+    }
+    submitToMailchimp(email);
     emailInput.style.display = 'none';
     const btn = emailInput.nextElementSibling;
     if (btn) btn.style.display = 'none';
     document.getElementById(successId).style.display = 'block';
   }
+  // ── END MAILCHIMP ─────────────────────────────────────
 </script>
 
 </body>
