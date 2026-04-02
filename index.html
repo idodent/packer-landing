@@ -23,16 +23,19 @@ html { scroll-behavior: smooth; }
 
 body {
 font-family: ‘Satoshi’, sans-serif;
-background: var(–cream);
-color: var(–navy);
+background: #FFF8F0;
+color: #0D1B2A;
 overflow-x: hidden;
-cursor: none;
+}
+@media (pointer: fine) {
+body { cursor: none; }
+a, button, input { cursor: none; }
 }
 
-/* Custom cursor */
+/* Custom cursor — desktop only */
 .cursor {
 width: 16px; height: 16px;
-background: var(–coral);
+background: #FF5C3A;
 border-radius: 50%;
 position: fixed;
 top: 0; left: 0;
@@ -40,10 +43,11 @@ pointer-events: none;
 z-index: 9999;
 transition: transform 0.15s ease, background 0.2s ease;
 mix-blend-mode: multiply;
+display: none;
 }
 .cursor-ring {
 width: 40px; height: 40px;
-border: 2px solid var(–coral);
+border: 2px solid #FF5C3A;
 border-radius: 50%;
 position: fixed;
 top: 0; left: 0;
@@ -51,6 +55,11 @@ pointer-events: none;
 z-index: 9998;
 transition: all 0.08s ease;
 opacity: 0.5;
+display: none;
+}
+@media (pointer: fine) {
+.cursor { display: block; }
+.cursor-ring { display: block; }
 }
 
 /* NAV */
@@ -695,15 +704,17 @@ transform: translateY(-2px);
 
 /* FOOTER */
 footer {
-background: var(–navy);
+background: #0D1B2A;
 color: rgba(255,255,255,0.4);
 padding: 40px 48px;
 display: flex;
 justify-content: space-between;
 align-items: center;
 font-size: 14px;
+flex-wrap: wrap;
+gap: 12px;
 }
-footer .logo { color: var(–white); font-size: 22px; }
+footer .logo { color: #ffffff; font-size: 22px; white-space: nowrap; min-width: fit-content; }
 
 /* ANIMATIONS */
 @keyframes fadeUp {
@@ -765,6 +776,8 @@ padding: 48px 40px;
 max-width: 460px;
 width: 100%;
 text-align: center;
+box-sizing: border-box;
+overflow: hidden;
 }
 .gate-logo {
 font-family: ‘Cabinet Grotesk’, sans-serif;
@@ -808,6 +821,8 @@ font-weight: 500;
 display: flex;
 flex-direction: column;
 gap: 12px;
+width: 100%;
+box-sizing: border-box;
 }
 .gate-input {
 width: 100%;
@@ -822,6 +837,9 @@ font-weight: 500;
 outline: none;
 transition: border-color 0.2s;
 text-align: center;
+box-sizing: border-box;
+display: block;
+margin: 0 auto;
 }
 .gate-input::placeholder { color: rgba(255,255,255,0.40); }
 .gate-input:focus { border-color: #FF5C3A; }
