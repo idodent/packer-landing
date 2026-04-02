@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packer — Pack Smarter. Travel Better.</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --coral: #FF5C3A;
+  --sun: #FFD166;
+  --sky: #06C8E0;
+  --mint: #3DFFC0;
+  --navy: #0D1B2A;
+  --cream: #FFF8F0;
+  --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Satoshi', sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Cursor */
+.cursor, .cursor-ring {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+}
+.cursor {
+  width: 16px; height: 16px;
+  background: var(--coral);
+  z-index: 9999;
+}
+.cursor-ring {
+  width: 40px; height: 40px;
+  border: 2px solid var(--coral);
+  opacity: 0.5;
+  z-index: 9998;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 48px;
+  position: fixed;
+  width: 100%;
+  background: rgba(255,248,240,0.85);
+}
+.logo {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+}
+.logo span { color: var(--coral); }
+
+.nav-cta {
+  background: var(--navy);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 100px;
+  text-decoration: none;
+}
+
+/* HERO */
+.hero {
+  padding: 140px 48px;
+}
+
+.hero h1 {
+  font-family: 'Cabinet Grotesk';
+  font-size: 72px;
+}
+
+.hero .line2 { color: var(--coral); }
+.hero .line3 {
+  -webkit-text-stroke: 2px var(--navy);
+  color: transparent;
+}
+
+.hero-form {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  padding: 14px;
+  border-radius: 100px;
+  border: 2px solid var(--navy);
+}
+
+button {
+  padding: 14px 20px;
+  border-radius: 100px;
+  background: var(--coral);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <div class="logo">Pack<span>er</span></div>
+  <a href="#waitlist" class="nav-cta">Get Early Access</a>
+</nav>
+
+<section class="hero">
+  <h1>
+    Stop guessing<br>
+    <span class="line2">what to pack.</span>
+    <span class="line3">Start traveling.</span>
+  </h1>
+
+  <div class="hero-form" id="waitlist">
+    <input type="email" id="heroEmail" placeholder="your@email.com" />
+    <button onclick="signup('heroEmail')">Join Waitlist</button>
+  </div>
+</section>
+
+<script>
+function signup(inputId) {
+  const input = document.getElementById(inputId);
+  const email = input.value;
+
+  if (!email || !email.includes("@")) {
+    input.style.borderColor = "red";
+    return;
+  }
+
+  fetch("https://gmail.us6.list-manage.com/subscribe/post?u=391e756fef9c831a306789fe7&id=027d6c41b9&f_id=00bd02e3f0", {
+    method: "POST",
+    mode: "no-cors",
+    body: new URLSearchParams({
+      EMAIL: email
+    })
+  });
+
+  // Redirect user into site
+  window.location.href = "/main.html";
+}
+</script>
+
+</body>
+</html>
