@@ -17,7 +17,7 @@
     --white: #FFFFFF;
   }
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
+--{ margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
 
@@ -911,14 +911,14 @@ justify-content: center;
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
+<!---NAV -->
 
 <nav>
   <div class="logo">Pack<span>er</span></div>
   <a href="#waitlist" class="nav-cta">Get Early Access</a>
 </nav>
 
-<!-- HERO -->
+<!---HERO -->
 
 <section class="hero">
   <div class="hero-bg-blob blob1"></div>
@@ -956,7 +956,7 @@ justify-content: center;
   </div>
 </section>
 
-<!-- PAIN -->
+<!---PAIN -->
 
 <section class="pain">
   <p class="pain-label">Sound familiar?</p>
@@ -986,7 +986,7 @@ justify-content: center;
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!---HOW IT WORKS -->
 
 <section class="how">
   <p class="section-label">How it works</p>
@@ -1014,7 +1014,7 @@ justify-content: center;
   </div>
 </section>
 
-<!-- PREVIEW -->
+<!---PREVIEW -->
 
 <section class="preview">
   <p class="section-label" style="color: var(--sky);">What you'll get</p>
@@ -1077,7 +1077,7 @@ justify-content: center;
   </div>
 </section>
 
-<!-- SOCIAL PROOF -->
+<!---SOCIAL PROOF -->
 
 <section class="social">
   <h2>Early users are obsessed. 🙌</h2>
@@ -1118,7 +1118,7 @@ justify-content: center;
   </div>
 </section>
 
-<!-- FINAL CTA -->
+<!---FINAL CTA -->
 
 <section class="final-cta">
   <h2>Ready to pack<br>smarter?</h2>
@@ -1131,7 +1131,7 @@ justify-content: center;
   <p class="success-msg" id="ctaSuccess" style="color: var(--white);">🎉 You're on the list! We'll be in touch.</p>
 </section>
 
-<!-- FOOTER -->
+<!---FOOTER -->
 
 <footer>
   <div class="logo">Pack<span style="color:var(--coral)">er</span></div>
@@ -1146,13 +1146,13 @@ justify-content: center;
 
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    cursor.style.transform = `translate(${mx - 8}px, ${my - 8}px)`;
+    cursor.style.transform = `translate(${mx --8}px, ${my --8}px)`;
   });
 
   function animateRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.transform = `translate(${rx - 20}px, ${ry - 20}px)`;
+    rx += (mx --rx) * 0.12;
+    ry += (my --ry) * 0.12;
+    ring.style.transform = `translate(${rx --20}px, ${ry --20}px)`;
     requestAnimationFrame(animateRing);
   }
   animateRing();
