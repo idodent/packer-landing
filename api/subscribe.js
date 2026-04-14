@@ -16,8 +16,8 @@ export default async function handler(req, res) {
       mode: 'subscription',
       customer_email: email,
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: 'https://packme.dev?success=true',
-      cancel_url: 'https://packme.dev?canceled=true',
+     success_url: 'exp://192.168.1.232:8081/dashboard?success=true',
+    cancel_url: 'exp://192.168.1.232:8081/subscription?canceled=true',
     });
 
     return res.status(200).json({ url: session.url });
