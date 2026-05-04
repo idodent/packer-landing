@@ -51,22 +51,23 @@ export default async function handler(req, res) {
         event.type === 'customer.subscription.updated') {
       const priceId = subscription.items.data[0].price.id;
       const tier = priceId === 'price_1TMEVABGRCcfNIrFLokhFRgt' ? 'pro' : 'explorer';
-      const { data } = await supabase.auth.admin.getUserByEmail(email);
-      if (data?.user) {
-        await supabase.from('profiles')
-          .update({ subscription_tier: tier })
-          .eq('id', data.user.id);
-        console.log('Updated', email, 'to', tier);
-      }
+
+      const { data, error } = await supabase
+        .from('profiles')
+        .update({ subscription_tier: tier })
+        .eq('email', email);
+
+      if (error) console.error('Supabase error:', error);
+      else console.log('Updated', email, 'to', tier);
     }
 
     if (event.type === 'customer.subscription.deleted') {
-      const { data } = await supabase.auth.admin.getUserByEmail(email);
-      if (data?.user) {
-        await supabase.from('profiles')
-          .update({ subscription_tier: 'free' })
-          .eq('id', data.user.id);
-      }
+      const { error } = await supabase
+        .from('profiles')
+        .update({ subscription_tier: 'free' })
+        .eq('email', email);
+
+      if (error) console.error('Supabase error:', error);
     }
   } catch (err) {
     console.error('Processing error:', err.message);
