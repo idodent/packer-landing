@@ -2,6 +2,7 @@
   "rewrites": [
     { "source": "/demo", "destination": "/demo.html" },
     { "source": "/success", "destination": "/success.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/", "destination": "/index.html" }
   ]
 }
